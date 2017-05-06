@@ -17,8 +17,7 @@ Tested in Android 4.1 and above.
 Drop me a line at [@dfbernardino][2] if you found it useful, I will be happy to know about it.
 
 ### Motivation
-None of the available libraries seemed stable enough as well as one able to swipe up and down _if needed_.
-Also, and contrary to similar projects, I made the effort to fully decouple the view moving capabilities from the deck view itself. So in case one wants to make a view swipeable without necessarily having a deck/stack behind, he will get the job done just by using _FlingChief_ class.
+None of the available libraries seemed stable enough as well as able to swipe in all directions. Contrary to similar projects, I made the effort to fully decouple the view moving capabilities from the deck view itself. In case one wants to make a view swipeable without necessarily having a deck/stack behind, that can be done using the _FlingChief_ class.
 
 
 License
