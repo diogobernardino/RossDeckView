@@ -1,0 +1,28 @@
+//noinspection GrPackage
+apply plugin: 'checkstyle'
+
+android {
+    lintOptions {
+        abortOnError true
+        xmlReport    false
+        htmlReport   false
+    }
+}
+
+checkstyle {
+    toolVersion = '7.5'
+}
+
+task checkstyle(type: Checkstyle) {
+    configFile = new File(rootDir, "checkstyle/checkstyle.xml")
+
+    def suppressionsFile = new File(rootDir, "checkstyle/suppressions.xml")
+    configProperties.checkstyleSuppressionsPath = suppressionsFile.absolutePath
+
+    source "src"
+    include "**/*.java"
+    exclude "**/gen/**"
+    classpath = files()
+}
+
+preBuild.dependsOn('checkstyle')

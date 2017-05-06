@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.db.rossdeckviewdemo.MainActivity">
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/left"
+        android:textSize="30sp"
+        android:layout_margin="5dp"
+        android:layout_centerVertical="true"
+        android:scaleY="0"
+        android:background="@android:color/black"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:id="@+id/up"
+        android:textSize="30sp"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
+        android:scaleX="0"
+        android:background="@android:color/black"/>
+    <View
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/right"
+        android:textSize="30sp"
+        android:layout_margin="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:scaleY="0"
+        android:background="@android:color/black"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:id="@+id/down"
+        android:textSize="30sp"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:scaleX="0"
+        android:background="@android:color/black"/>
+
+    <com.db.rossdeckview.RossDeckView
+        android:id="@+id/decklayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
