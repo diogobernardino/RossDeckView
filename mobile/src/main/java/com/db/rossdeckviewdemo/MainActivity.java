@@ -71,6 +71,12 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     }
 
     @Override
+    public boolean onTopCardTapped() {
+        System.out.println(mItems.get(0));
+        return true;
+    }
+
+    @Override
     public void onProximityUpdate(float[] proximities, View view) {
 
         mLeftView.setScaleY((1 - proximities[0] >= 0) ? 1 - proximities[0] : 0);

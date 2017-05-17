@@ -307,6 +307,11 @@ public class RossDeckView extends BaseAdapterView {
             @Override public boolean onReturned(View view) {
                 return actionListener.onReturned(view);
             }
+
+            @Override
+            public boolean onTopCardTapped() {
+                return actionListener.onTopCardTapped();
+            }
         });
     }
 
