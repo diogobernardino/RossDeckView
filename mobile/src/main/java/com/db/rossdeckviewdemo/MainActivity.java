@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     private View mDownView;
     private int count = 0;
 
+    private RossDeckView mDeckLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
         mItems.add("there");
         mAdapter = new ArrayAdapter<>(this, R.layout.item, R.id.item_text, mItems);
 
-        RossDeckView mDeckLayout = (RossDeckView) findViewById(R.id.decklayout);
+        mDeckLayout = (RossDeckView) findViewById(R.id.decklayout);
         mDeckLayout.setAdapter(mAdapter);
         mDeckLayout.setActionsListener(this);
         mDeckLayout.setProximityListener(this);
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     @Override
     public boolean onDoubleTapped() {
         Toast.makeText(this, "Double tapped", Toast.LENGTH_SHORT).show();
+        mDeckLayout.dismissTop(FlingChief.Direction.RIGHT);
         return true;
     }
 
