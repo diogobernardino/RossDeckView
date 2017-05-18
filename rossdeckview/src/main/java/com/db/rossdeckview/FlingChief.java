@@ -15,7 +15,7 @@ import java.util.Arrays;
 /**
  * Class which empowers a view, giving it drag and fling capabilities.
  */
-public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestureListener {
+public class FlingChief extends GestureDetector.SimpleOnGestureListener implements View.OnTouchListener, GestureDetector.OnGestureListener {
 
 	private static final float ROTATION_COEFFICIENT = 15f;
 
@@ -154,6 +154,18 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 
 	@Override
 	public boolean onSingleTapUp(MotionEvent e) { return false; }
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        mActionCallback.onTapped();
+        return true;
+    }
+
+	@Override
+	public boolean onDoubleTap(MotionEvent e) {
+		mActionCallback.onDoubleTapped();
+		return true;
+	}
 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {

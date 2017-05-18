@@ -1,7 +1,7 @@
 package com.db.rossdeckviewdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -13,7 +13,7 @@ import com.db.rossdeckview.RossDeckView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FlingChiefListener.Actions, FlingChiefListener.Proximity{
+public class MainActivity extends AppCompatActivity implements FlingChiefListener.Actions, FlingChiefListener.Proximity {
 
     private List<String> mItems;
     private ArrayAdapter<String> mAdapter;
@@ -67,6 +67,18 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
 
     @Override
     public boolean onReturned(View view) {
+        return true;
+    }
+
+    @Override
+    public boolean onTapped() {
+        System.out.println("tap on: " + mItems.get(0));
+        return true;
+    }
+
+    @Override
+    public boolean onDoubleTapped() {
+        System.out.println("double tap on: " + mItems.get(0));
         return true;
     }
 
