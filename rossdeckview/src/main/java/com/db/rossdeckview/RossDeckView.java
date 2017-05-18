@@ -280,6 +280,14 @@ public class RossDeckView extends BaseAdapterView {
         mFlingChief.setDirections(directions);
     }
 
+    public boolean dismissTop(FlingChief.Direction direction) {
+        if (mFlingChief != null && mActiveCard != null) {
+            mFlingChief.dismissTo(direction);
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * Set listener to be notified once an action is about to be performed or performed.
