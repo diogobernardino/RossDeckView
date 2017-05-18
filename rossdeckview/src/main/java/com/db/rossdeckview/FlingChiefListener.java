@@ -50,7 +50,14 @@ public interface FlingChiefListener {
          *
          * @return True if action should happen, False otherwise
          */
-        boolean onTopCardTapped();
+        boolean onTapped();
+
+		/**
+		 * Once the top card is double tapped
+		 *
+		 * @return True if action should happen, False otherwise
+		 */
+		boolean onDoubleTapped();
 	}
 
 	/**

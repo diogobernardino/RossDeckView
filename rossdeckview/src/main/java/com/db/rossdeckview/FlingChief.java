@@ -157,9 +157,15 @@ public class FlingChief extends GestureDetector.SimpleOnGestureListener implemen
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
-        mActionCallback.onTopCardTapped();
+        mActionCallback.onTapped();
         return true;
     }
+
+	@Override
+	public boolean onDoubleTap(MotionEvent e) {
+		mActionCallback.onDoubleTapped();
+		return true;
+	}
 
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
