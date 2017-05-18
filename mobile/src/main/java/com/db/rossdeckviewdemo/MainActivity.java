@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
 
     @Override
     public boolean onTapped() {
-        System.out.println("tap on: " + mItems.get(0));
+        Toast.makeText(this, "Tapped", Toast.LENGTH_SHORT).show();
         return true;
     }
 
     @Override
     public boolean onDoubleTapped() {
-        System.out.println("double tap on: " + mItems.get(0));
+        Toast.makeText(this, "Double tapped", Toast.LENGTH_SHORT).show();
         return true;
     }
 
