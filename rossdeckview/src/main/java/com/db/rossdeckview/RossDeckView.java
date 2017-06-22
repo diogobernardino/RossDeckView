@@ -267,7 +267,7 @@ public class RossDeckView extends BaseAdapterView {
      * @param factor Factor to be used between background views
      */
     public void setStackScale(float factor) {
-        sStackPadding = factor;
+        sStackScale = factor;
     }
 
 
