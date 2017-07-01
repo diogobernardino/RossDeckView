@@ -47,8 +47,11 @@
         android:background="@android:color/black"/>
 
     <com.db.rossdeckview.RossDeckView
+        xmlns:derdidaz="http://schemas.android.com/apk/res-auto"
         android:id="@+id/decklayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        derdidaz:stack_padding="6dp"
+        derdidaz:stack_scale=".1"/>
 
 </RelativeLayout>
