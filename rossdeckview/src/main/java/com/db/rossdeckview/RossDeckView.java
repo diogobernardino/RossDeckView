@@ -36,6 +36,9 @@ public class RossDeckView extends BaseAdapterView {
 
     private FlingChief mFlingChief;
 
+    @FloatRange(from = 0.f, to = 1.f)
+    private float mFactor;
+
 
     public RossDeckView(Context context) {
         super(context);
@@ -68,7 +71,8 @@ public class RossDeckView extends BaseAdapterView {
         mFlingChief.setProximityListener(new FlingChiefListener.Proximity() {
             @Override
             public void onProximityUpdate(float[] proximities, View view) {
-                moveBackgroundViews(calculateBackgroundFactor(proximities), false);
+                mFactor = calculateBackgroundFactor(proximities);
+                moveBackgroundViews(mFactor, false);
             }
         });
     }
@@ -155,8 +159,14 @@ public class RossDeckView extends BaseAdapterView {
 
         View view;
         while (startIndex < nViews) {
+
             view = mAdapter.getView(startIndex, null, this);
             addChildToLayout(view, startIndex);
+
+            // Set view according to current factor
+            view.setTranslationY(-mFactor * sStackPadding);
+            view.setScaleX(1.f - startIndex * sStackScale + mFactor * sStackScale);
+
             startIndex++;
         }
         sLastObjectOnStack = startIndex - 1;
@@ -189,18 +199,15 @@ public class RossDeckView extends BaseAdapterView {
         int w = child.getMeasuredWidth();
         int h = child.getMeasuredHeight();
 
-        // Find left and top center coordinates
+        // Position view
         int childLeft = (getWidth() + getPaddingLeft() - getPaddingRight() - w) / 2
                 + lp.leftMargin - lp.rightMargin;
         int childTop = (getHeight() + getPaddingTop() - getPaddingBottom() - h) / 2
                 + lp.topMargin - lp.bottomMargin;
-
         child.layout(childLeft,
                 childTop + (int) (index * sStackPadding),
                 childLeft + w,
                 childTop + h + (int) (index * sStackPadding));
-
-        child.setScaleX(1.f - index * sStackScale);
     }
 
 
@@ -242,8 +249,10 @@ public class RossDeckView extends BaseAdapterView {
         }
     }
 
+
     /**
      * Set number of childs to be displayed on the stack.
+     *
      * @param max Maximum number of views to be displayed
      */
     public void setMaxVisible(int max) {
@@ -290,7 +299,8 @@ public class RossDeckView extends BaseAdapterView {
 
         mFlingChief.setActionListener(new FlingChiefListener.Actions() {
             @Override public boolean onDismiss(FlingChief.Direction direction, View view) {
-                moveBackgroundViews(1.f, true);
+                mFactor = 1.f;
+                moveBackgroundViews(mFactor, true);
                 return actionListener.onDismiss(direction, view);
             }
 
@@ -300,7 +310,8 @@ public class RossDeckView extends BaseAdapterView {
             }
 
             @Override public boolean onReturn(View view) {
-                moveBackgroundViews(0.f, true);
+                mFactor = 0.f;
+                moveBackgroundViews(mFactor, true);
                 return actionListener.onReturn(view);
             }
 
@@ -331,7 +342,8 @@ public class RossDeckView extends BaseAdapterView {
         mFlingChief.setProximityListener(new FlingChiefListener.Proximity() {
             @Override
             public void onProximityUpdate(float[] proximities, View view) {
-                moveBackgroundViews(calculateBackgroundFactor(proximities), false);
+                mFactor = calculateBackgroundFactor(proximities);
+                moveBackgroundViews(mFactor, false);
                 proximityListener.onProximityUpdate(proximities, view);
             }
         });
