@@ -1,5 +1,6 @@
 package com.db.rossdeckview;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
@@ -19,7 +20,7 @@ public interface FlingChiefListener {
 		 * @param view View where action will be applied
 		 * @return True if action should happen, False otherwise
 		 */
-		boolean onDismiss(FlingChief.Direction direction, View view);
+		boolean onDismiss(@NonNull FlingChief.Direction direction, @NonNull View view);
 
 		/**
 		 * Once done with dismiss action.
@@ -27,7 +28,7 @@ public interface FlingChiefListener {
 		 * @param view View where action will be applied
 		 * @return True if action should happen, False otherwise
 		 */
-		boolean onDismissed(View view);
+		boolean onDismissed(@NonNull View view);
 
 		/**
 		 * Once flinged view is about to return to its initial position/state.
@@ -35,7 +36,7 @@ public interface FlingChiefListener {
 		 * @param view View where action will be applied
 		 * @return True if action should happen, False otherwise
 		 */
-		boolean onReturn(View view);
+		boolean onReturn(@NonNull View view);
 
 		/**
 		 * Once done with return action.
@@ -43,7 +44,7 @@ public interface FlingChiefListener {
 		 * @param view View where action will be applied
 		 * @return True if action should happen, False otherwise
 		 */
-		boolean onReturned(View view);
+		boolean onReturned(@NonNull View view);
 
         /**
          * Once the top card is tapped
@@ -72,7 +73,7 @@ public interface FlingChiefListener {
 		 *                          representing the proximity of the view to the parent border.
 		 * @param view View
 		 */
-		void onProximityUpdate(float[] proximities, View view);
+		void onProximityUpdate(@NonNull float[] proximities, @NonNull View view);
 	}
 
 }
