@@ -300,24 +300,24 @@ public class RossDeckView extends BaseAdapterView {
     public void setActionsListener(final FlingChiefListener.Actions actionListener) {
 
         mFlingChief.setActionListener(new FlingChiefListener.Actions() {
-            @Override public boolean onDismiss(FlingChief.Direction direction, View view) {
+            @Override public boolean onDismiss(@NonNull FlingChief.Direction direction, @NonNull View view) {
                 mFactor = 1.f;
                 moveBackgroundViews(mFactor, true);
                 return actionListener.onDismiss(direction, view);
             }
 
-            @Override public boolean onDismissed(View view) {
+            @Override public boolean onDismissed(@NonNull View view) {
                 mActiveCard = null;
                 return actionListener.onDismissed(view);
             }
 
-            @Override public boolean onReturn(View view) {
+            @Override public boolean onReturn(@NonNull View view) {
                 mFactor = 0.f;
                 moveBackgroundViews(mFactor, true);
                 return actionListener.onReturn(view);
             }
 
-            @Override public boolean onReturned(View view) {
+            @Override public boolean onReturned(@NonNull View view) {
                 return actionListener.onReturned(view);
             }
 
@@ -343,7 +343,7 @@ public class RossDeckView extends BaseAdapterView {
 
         mFlingChief.setProximityListener(new FlingChiefListener.Proximity() {
             @Override
-            public void onProximityUpdate(float[] proximities, View view) {
+            public void onProximityUpdate(@NonNull float[] proximities, @NonNull View view) {
                 mFactor = calculateBackgroundFactor(proximities);
                 moveBackgroundViews(mFactor, false);
                 proximityListener.onProximityUpdate(proximities, view);

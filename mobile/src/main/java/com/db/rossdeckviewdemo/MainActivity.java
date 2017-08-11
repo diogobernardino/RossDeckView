@@ -2,6 +2,7 @@ package com.db.rossdeckviewdemo;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -59,14 +60,14 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     }
 
     @Override
-    public boolean onDismiss(FlingChief.Direction direction, View view) {
+    public boolean onDismiss(@NonNull FlingChief.Direction direction, @NonNull View view) {
 
         Toast.makeText(this, "Dismiss to " + direction, Toast.LENGTH_SHORT).show();
         return true;
     }
 
     @Override
-    public boolean onDismissed(View view) {
+    public boolean onDismissed(@NonNull View view) {
 
         mItems.remove(0);
         mAdapter.notifyDataSetChanged();
@@ -75,12 +76,12 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     }
 
     @Override
-    public boolean onReturn(View view) {
+    public boolean onReturn(@NonNull View view) {
         return true;
     }
 
     @Override
-    public boolean onReturned(View view) {
+    public boolean onReturned(@NonNull View view) {
         return true;
     }
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     }
 
     @Override
-    public void onProximityUpdate(float[] proximities, View view) {
+    public void onProximityUpdate(@NonNull float[] proximities, @NonNull View view) {
 
         mLeftView.setScaleY((1 - proximities[0] >= 0) ? 1 - proximities[0] : 0);
         mUpView.setScaleX((1 - proximities[1] >= 0) ? 1 - proximities[1] : 0);
