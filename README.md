@@ -11,7 +11,7 @@ Tested in Android 4.1 and above.
 
 ### Gradle
 ``` groovy
-   compile 'com.diogobernardino:rossdeckview:1.1'
+   compile 'com.diogobernardino:rossdeckview:1.2'
 ```
 
 Drop me a line at [@dfbernardino][2] if you found it useful, I will be happy to know about it.
