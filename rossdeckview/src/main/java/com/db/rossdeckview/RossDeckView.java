@@ -351,4 +351,14 @@ public class RossDeckView extends BaseAdapterView {
         });
     }
 
+
+    /**
+     * Fling view to one of the available directions.
+     *
+     * @param direction Direction to fling view
+     */
+    public void fling(FlingChief.Direction direction) {
+        mFlingChief.dismissTo(direction);
+    }
+
 }

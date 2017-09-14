@@ -260,7 +260,7 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 	 *
 	 * @param direction Direction where view should be dismissed
 	 */
-	private void dismissTo(Direction direction) {
+	void dismissTo(Direction direction) {
 
 		if (Arrays.asList(mDirections).contains(direction)
 				&& (mActionCallback != null && mActionCallback.onDismiss(direction, mView) || mActionCallback == null))
