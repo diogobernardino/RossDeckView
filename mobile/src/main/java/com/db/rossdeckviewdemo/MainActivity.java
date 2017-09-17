@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
     private List<Pair<String, Integer>> mItems;
 
     private DeckAdapter mAdapter;
+
+    private RossDeckView mDeckLayout;
 
     private View mLeftView;
 
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
         mItems.add(newItem());
         mAdapter = new DeckAdapter(this, mItems);
 
-        RossDeckView mDeckLayout = (RossDeckView) findViewById(R.id.decklayout);
+        mDeckLayout = (RossDeckView) findViewById(R.id.decklayout);
         mDeckLayout.setAdapter(mAdapter);
         mDeckLayout.setActionsListener(this);
         mDeckLayout.setProximityListener(this);
@@ -57,6 +61,24 @@ public class MainActivity extends AppCompatActivity implements FlingChiefListene
         mUpView = findViewById(R.id.up);
         mRightView = findViewById(R.id.right);
         mDownView = findViewById(R.id.down);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_fling:
+                mDeckLayout.fling(FlingChief.Direction.TOP);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

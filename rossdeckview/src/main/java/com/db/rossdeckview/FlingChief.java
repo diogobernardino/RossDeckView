@@ -116,16 +116,23 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 		mView = view;
 	}
 
-	@Override
-	public boolean onDown(MotionEvent e) {
+
+	/**
+	 * Initialize parent and initial view properties.
+	 */
+	private void init() {
 
 		// Measure parent
 		mParenRect = new Rect(0, 0, ((View) mView.getParent()).getWidth(),
 				((View) mView.getParent()).getHeight());
-
 		// Keep snapshot of initial view state
 		mInitRect = new Rect(mView.getLeft(), mView.getTop(), mView.getRight(), mView.getBottom());
+	}
 
+	@Override
+	public boolean onDown(MotionEvent e) {
+
+		init();
 		return !mIsAnimating;
 	}
 
@@ -413,6 +420,7 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 
 		mView = view;
 		mView.setOnTouchListener(this);
+		init();
 	}
 
 }
