@@ -240,13 +240,15 @@ public class RossDeckView extends BaseAdapterView {
         View view;
         for (int i = 0; i < sLastObjectOnStack; i++) {
             view = getChildAt(i);
-            if (animate) {
-                view.animate()
-                        .translationY(-factor * sStackPadding)
-                        .scaleX(1.f - (sLastObjectOnStack - i) * sStackScale + factor * sStackScale);
-            } else {
-                view.setTranslationY(-factor * sStackPadding);
-                view.setScaleX(1.f - (sLastObjectOnStack - i) * sStackScale + factor * sStackScale);
+            if (view != null) {
+                if (animate) {
+                    view.animate()
+                            .translationY(-factor * sStackPadding)
+                            .scaleX(1.f - (sLastObjectOnStack - i) * sStackScale + factor * sStackScale);
+                } else {
+                    view.setTranslationY(-factor * sStackPadding);
+                    view.setScaleX(1.f - (sLastObjectOnStack - i) * sStackScale + factor * sStackScale);
+                }
             }
         }
     }
