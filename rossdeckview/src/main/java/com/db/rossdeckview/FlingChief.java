@@ -5,6 +5,7 @@ import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -235,13 +236,20 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 	 */
 	private void restore() {
 
-		mIsAnimating = true;
-		mView.animate()
-				.x(mInitRect.left)
-				.y(mInitRect.top)
-				.rotation(0)
-				.setListener(mReturnAnimationListener)
-				.setDuration(ANIMATION_DURATION);
+		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+			mView.setX(mInitRect.left);
+			mView.setY(mInitRect.top);
+			mView.setRotation(0);
+			mReturnAnimationListener.onAnimationEnd(null);
+		} else {
+			mIsAnimating = true;
+			mView.animate()
+					  .x(mInitRect.left)
+					  .y(mInitRect.top)
+					  .rotation(0)
+					  .setListener(mReturnAnimationListener)
+					  .setDuration(ANIMATION_DURATION);
+		}
 	}
 
 
@@ -253,12 +261,18 @@ public class FlingChief implements View.OnTouchListener, GestureDetector.OnGestu
 	 */
 	private void dismiss(int x, int y) {
 
-		mIsAnimating = true;
-		mView.animate()
-				.x(x)
-				.y(y)
-				.setListener(mDismissAnimationListener)
-				.setDuration(ANIMATION_DURATION);
+		if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+			mView.setX(x);
+			mView.setY(y);
+			mDismissAnimationListener.onAnimationEnd(null);
+		} else {
+			mIsAnimating = true;
+			mView.animate()
+					  .x(x)
+					  .y(y)
+					  .setListener(mDismissAnimationListener)
+					  .setDuration(ANIMATION_DURATION);
+		}
 	}
 
 
